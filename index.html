@@ -12,8 +12,8 @@
 <div class="scores">
     <a href="#">View High Scores</a>
 </div>
-<div class="timer">
-    <p>Time: 75</p>
+<div id="timer" class="timer">
+    Time: 75
 </div>
 </header>
 <div class="content">
@@ -24,15 +24,15 @@
     </div>
     <div id="questions-container" class="hidden">
         <h1 id="question">Question</h1>
-        <div id="choice-buttons">
+        <div id="choice-buttons" class="btn-grid">
             <button class="btn">Choice 1</button>
             <button class="btn">Choice 2</button>
             <button class="btn">Choice 3</button>
             <button class="btn">Choice 4</button>
         </div>
-        <button id="next-btn" class="hide next-btn">Next</button>
-        <h2 class="correct hide">Correct</h2>
-        <h2 class="correct hide">Incorrect</h2>
+        <h2 id="check-answer" class="correct-wrong hide"></h2>
+        <div class="controls">
+            <button id="next-btn" class="next-btn hide">Next</button>
     </div>
 </div>
     <script src="./assets/js/script.js"></script>

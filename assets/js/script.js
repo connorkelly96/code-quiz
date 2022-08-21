@@ -25,7 +25,7 @@ function startGame() {
 
 function startNextQuestion() {
     resetQuestion();
-    displayQuestion(shuffledQuestnos[currentQuestionIndex]);
+    displayQuestion(shuffledQuestions[currentQuestionIndex]);
 }
 
 function displayQuestion(question) {
@@ -45,6 +45,7 @@ function displayQuestion(question) {
 
 function resetQuestion() {
     clearStatusClass(document.body)
+    nextButton.classList.add("hidden")
     while(answerButtonsEl.firstChild) {
         answerButtonsEl.removeChild(answerButtonEl.firstChild)
     }

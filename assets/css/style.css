@@ -7,8 +7,10 @@
 
 :root {
 --primary-color: #1a90d4;
---secondary-color: #8cc014;
+--secondary-color: #ac14c0;
 --tertiary-color: #aaaaaa;
+--white-color: #ffffff;
+--correct-color: #6b8e23;
 }
 
 body{
@@ -31,7 +33,7 @@ header {
 }
 
 .scores a,
-.timer p {
+.timer  {
     font-size: 20px;
 }
 
@@ -52,7 +54,21 @@ h1{
     margin-bottom: 12px;
 }
 
+h2 {
+    color: var(--tertiary-color);
+    border-top: 1px solid var(--tertiary-color);
+    margin: 20px 0;
+    font-style: italic;
+    text-align: center;
+  }
 /*for the buttons*/
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 20px 0;
+  }
+
 button {
     font-family: Arial, Helvetica, sans-serif;
     border: none;
@@ -76,49 +92,10 @@ button:hover {
 }
 
 .btn.correct {
-    background-color: #009000;
+    background-color: var(--correct-color);
 }
 
 .btn.wrong {
     background-color: var(--tertiary-color);
 }
 
-/*for the content*/
-ol {
-    counter-reset: count;
-}
-
-ol li {
-    padding: 10px;
-    background-color: var(--primary-color);
-    list-style-type: none;
-    width: fit-content;
-    min-width: 250px;
-    border-radius: 10px;
-    font-size: large;
-    margin: 10px 0;
-}
-
-ol li:hover {
-    background-color: var(--secondary-color);
-}
-
-ol li:before {
-    counter-increment: count;
-    content: counter(count) " ";
-    margin-right: 0.5em;
-    display: inline-block;
-    padding: 0 5px;
-    color: var(--white-color);
-}
-  
-ol li a {
-    color: var(--white-color);
-}
-  
-h2 {
-    color: var(--tertiary-color);
-    border-top: 1px solid var(--tertiary-color);
-    margin: 20px 0;
-    font-style: italic;
-}
