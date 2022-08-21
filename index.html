@@ -10,19 +10,19 @@
 <body>
 <header>        
 <div class="scores">
-    <a href="#">View High Scores</a>
+    <a id="highscores-link">View High Scores</a>
 </div>
 <div id="timer" class="timer">
     Time: 75
 </div>
 </header>
 <div class="content">
-    <div id="starting-container" class="start-quiz">
+    <section id="starting-container" class="start-quiz">
         <h1> Welcome to Code Quiz</h1>
         <p> You'll have 75 seconds to answer the questions. Try to get the highest score possible. Wrong answers will decuct your time by 10 seconds. Your score will be the total time you have left after answering all the questions. Press start to begin!</p>
         <button id="startBtn" class="startBtn">Start</button>
-    </div>
-    <div id="questions-container" class="hidden">
+    </section>
+    <section id="questions-container" class="hidden">
         <h1 id="question">Question</h1>
         <div id="choice-buttons" class="btn-grid">
             <button class="btn">Choice 1</button>
@@ -34,7 +34,31 @@
         <div class="controls">
             <button id="next-btn" class="next-btn hide">Next</button>
     </div>
-</div>
+</section>
+<section id="score-container" class="hidden">
+    <form id="submit-form">
+        <h3 id="your-score"></h3>
+        <label id="initials-label">Save your score:</label>
+        <input type="text" id="initials-field" maxlength="3" placeholder="Enter your initials" />
+        <button id="submit-btn">Submit</button>
+    </form>
+</section>
+<section id="highscores" class="highscores-container hidden">
+    <div id="high-scores">
+        <h1>Your Score</h1>
+        <ul class="score-list" id="score-list">
+            <li id="highscore" class="score-list-item">
+                <div id="initial1" class="initials"></div>
+                <div id="score1" class="score"></div>
+            </li>
+        </ul>
+        <h2>Refresh the page to begin.</h2>
+    </div>
+    <div id="no-scores">
+        <h2>
+            We don't have any scores yet. Refresh the page.
+        </h2>
+    </section>
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/questions.js"></script>
 </body>
