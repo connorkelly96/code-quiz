@@ -80,7 +80,7 @@ if (shuffledQuestions.length > currentQuestionIndex + 1) {
     nextButton.classList.remove("hidden");
     checkAnswerEl.classList.remove("hide");
 } else {
-
+    startButton.innetText = "Restart"
     startButton.classList.remove("hidden");
 }
 };
@@ -104,13 +104,16 @@ function clearStatusClass(element) {
 };
 
 function saveScore() {
-    document.getElementById("score-container").style.display = "inline-block";
+    document.getElementById("score-container").classList.remove("hidden");
+    questionContainerEl.classList.add("hidden");
     document.getElementById("your-score").textContent =  "Your final score is " + timeLeft
     
 };
 
 function showHighScores(initials) {
-    document.getElementById("highscores").classList.remove("hidden")
+    document.getElementById("highscores").classList.remove("hidden");
+    document.getElementById("score-container").classList.add("hide");
+    questionContainerEl.classList.add("hide");
 
     var initials = localStorage.getItem("initials");
     var score = localStorage.getItem("timeLeft");
