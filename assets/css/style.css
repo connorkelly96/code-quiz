@@ -106,3 +106,11 @@ button:hover {
     justify-content: center;
     align-items: center;
 }
+
+/*highscore page*/
+.highscore {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 24px 0;
+}
