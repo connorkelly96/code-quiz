@@ -110,8 +110,7 @@ function saveScore() {
 };
 
 function showHighScores(initials) {
-    document.getElementById("highscores").style.display = "inline-block";
-    document.getElementById("high-scores").style.display = "inline-block"
+    document.getElementById("highscores").classList.remove("hidden")
 
     var initials = localStorage.getItem("initials");
     var score = localStorage.getItem("timeLeft");
@@ -122,8 +121,7 @@ function showHighScores(initials) {
     scoreField.textContent = timeLeft;
 
     if (initials == null || timeLeft == null) {
-        document.getElementById("high-scores").style.display = "none";
-        document.getElementById("no-scores").style.display = "inline-block";
+        document.getElementById("no-scores").classList.remove("hidden");
       }
   };
 

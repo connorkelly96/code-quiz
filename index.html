@@ -38,7 +38,7 @@
 <section id="score-container" class="hidden">
     <form id="submit-form">
         <h3 id="your-score"></h3>
-        <label id="initials-label">Save your score:</label>
+        <label id="initials-label">Save your score! Enter initials:</label>
         <input type="text" id="initials-field" maxlength="3" placeholder="Enter your initials" />
         <button id="submit-btn">Submit</button>
     </form>
@@ -46,15 +46,13 @@
 <section id="highscores" class="highscores-container hidden">
     <div id="high-scores">
         <h1>Your Score</h1>
-        <ul class="score-list" id="score-list">
-            <li id="highscore" class="score-list-item">
-                <div id="initial1" class="initials"></div>
-                <div id="score1" class="score"></div>
-            </li>
-        </ul>
+        <div id="highscore" class="highscore-list">
+            <div id="initial1" class="initials"></div>
+            <div id="score1" class="score"></div>
+        </div>
         <h2>Refresh the page to begin.</h2>
     </div>
-    <div id="no-scores">
+    <div id="no-scores" class="highscores-container hidden">
         <h2>
             We don't have any scores yet. Refresh the page.
         </h2>
