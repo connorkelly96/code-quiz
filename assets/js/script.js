@@ -43,3 +43,15 @@ function resetQuestion() {
         answerButtonsEl.removeChild(answerButtonEl.firstChild)
     }
 }
+
+function chooseAnswer(e) {
+var selectedButton = e.target;
+var correct = selectedButton.dataset.correct;
+Array.from(answerButtonsEl.children).forEach(button)
+if (shuffledQuestions.length > currentQuestionIndex + 1) {
+    nextButton.classList.remove('hidden')
+} else {
+    startButton.innerText = 'Restart'
+    startButton.classList.remove('hidden')
+}
+}
