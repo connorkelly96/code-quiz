@@ -75,6 +75,14 @@ button:hover {
     display: none;
 }
 
+.btn.correct {
+    background-color: #009000;
+}
+
+.btn.wrong {
+    background-color: var(--tertiary-color);
+}
+
 /*for the content*/
 ol {
     counter-reset: count;
