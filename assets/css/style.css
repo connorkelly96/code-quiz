@@ -99,3 +99,9 @@ button:hover {
     background-color: var(--tertiary-color);
 }
 
+/*next button*/
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

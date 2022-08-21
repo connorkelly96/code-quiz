@@ -1,12 +1,26 @@
-var time = 75;
+var timeLeft = 75;
+var timerEl = document.getElementById("timer");
 var startButton = document.getElementById("startBtn");
 var nextButton = document.getElementById("next-btn")
 var questionContainerEl = document.getElementById("questions-container");
 var startContainerEl = document.getElementById("starting-container");
 var questionEl = document.getElementById("question");
 var answerButtonsEl = document.getElementById("choice-buttons");
+var checkAnswerEl = document.getElementById("check-answer");
 
 var shuffledQuestions, currentQuestions
+
+function timer() {
+    var timeInterval = setInterval(function () {
+        timerEl.textContent = "Time: " + timeLeft;
+        timeLeft--;
+        if (timeLeft === 0) {
+            console.log("You are out of time");
+            //timerEl.textContent = "";
+            //clearInterval(timeInterval);
+        }
+    }, 1000)
+}
 
 startButton.addEventListener('click', startGame);
 nextButton.addEventListener("click", () => {
