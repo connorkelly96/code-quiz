@@ -24,10 +24,10 @@ function timer() {
 
 startButton.addEventListener('click', startGame);
 nextButton.addEventListener("click", () => {
-    currentQuestionIndex++
-    startNextQuestion()
+    currentQuestionIndex++;
+    startNextQuestion();
 })
-
+//start the game
 function startGame() {
     startButton.classList.add("hidden");
     startContainerEl.classList.add("hidden");
@@ -36,7 +36,7 @@ function startGame() {
     questionContainerEl.classList.remove("hidden");
     startNextQuestion();
 }
-
+//go to next question
 function startNextQuestion() {
     resetQuestion();
     displayQuestion(shuffledQuestions[currentQuestionIndex]);
@@ -58,38 +58,42 @@ function displayQuestion(question) {
 }
 
 function resetQuestion() {
-    clearStatusClass(document.body)
-    nextButton.classList.add("hidden")
+    nextButton.classList.add("hidden");
+    checkAnswerEl,classList.add("hidden");
     while(answerButtonsEl.firstChild) {
-        answerButtonsEl.removeChild(answerButtonEl.firstChild)
+        answerButtonsEl.removeChild(answerButtonEl.firstChild);
     }
 }
 
 function chooseAnswer(e) {
 var selectedButton = e.target;
 var correct = selectedButton.dataset.correct;
-setStatuClass(document.body, correct)
+
 Array.from(answerButtonsEl.children).forEach(button => {
-    setStatuClass(button, button.dataset.correct)
+    setStatuClass(button, button.dataset.correct);
 })
 if (shuffledQuestions.length > currentQuestionIndex + 1) {
-    nextButton.classList.remove("hidden")
+    nextButton.classList.remove("hidden");
+    checkAnswerEl.classList.remove("hide");
 } else {
-    startButton.innerText = 'Restart'
-    startButton.classList.remove("hidden")
+
+    startButton.classList.remove("hidden");
 }
 }
 
 function setStatusClass(element, correct) {
     clearStatusClass(element)
     if (correct) {
-        element.classList.add("correct")
+        element.classList.add("correct");
+        document.querySelector("#check-answer").textContent = "Correct!";
     } else {
-        element.classList.add("wrong")
+        timeLeft -= 10;
+        element.classList.add("wrong");
+        document.querySelector("#check-answer").textContent = "Wrong!";
     }
 }
 
 function clearStatusClass(element) {
-    element.classList.remove("correct")
-    element.classList.remove("wrong")
+    element.classList.remove("correct");
+    element.classList.remove("wrong");
 }
