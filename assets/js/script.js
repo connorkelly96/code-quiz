@@ -10,7 +10,7 @@ var checkAnswerEl = document.getElementById("check-answer");
 var viewHighScores = document.getElementById("highscores-link");
 var submitButton = document.getElementById("submit-btn");
 
-var shuffledQuestions, currentQuestions
+var shuffledQuestions, currentQuestions;
 
 function timer() {
     var timeInterval = setInterval(function () {
@@ -23,13 +23,14 @@ function timer() {
             saveScore();
         }
     }, 1000);
-}
+    return timeLeft;
+};
 
 startButton.addEventListener('click', startGame);
 nextButton.addEventListener("click", () => {
     currentQuestionIndex++;
     startNextQuestion();
-})
+});
 //start the game
 function startGame() {
 
@@ -38,12 +39,12 @@ function startGame() {
     currentQuestionIndex = 0
     questionContainerEl.classList.remove("hidden");
     startNextQuestion();
-}
+};
 //go to next question
 function startNextQuestion() {
     resetQuestion();
     displayQuestion(shuffledQuestions[currentQuestionIndex]);
-}
+};
 //display questions
 function displayQuestion(question) {
     questionEl.innerText = question.question;
@@ -58,7 +59,7 @@ function displayQuestion(question) {
         button.addEventListener("click", chooseAnswer);
         answerButtinEl.appendChild(button);
     })
-}
+};
 
 function resetQuestion() {
     nextButton.classList.add("hidden");
@@ -66,7 +67,7 @@ function resetQuestion() {
     while(answerButtonsEl.firstChild) {
         answerButtonsEl.removeChild(answerButtonEl.firstChild);
     }
-}
+};
 
 function chooseAnswer(e) {
 var selectedButton = e.target;
@@ -82,10 +83,11 @@ if (shuffledQuestions.length > currentQuestionIndex + 1) {
 
     startButton.classList.remove("hidden");
 }
-}
+};
 
 function setStatusClass(element, correct) {
     clearStatusClass(element)
+    console.log(correct)
     if (correct) {
         element.classList.add("correct");
         document.querySelector("#check-answer").textContent = "Correct!";
@@ -94,15 +96,42 @@ function setStatusClass(element, correct) {
         element.classList.add("wrong");
         document.querySelector("#check-answer").textContent = "Wrong!";
     }
-}
+};
 
 function clearStatusClass(element) {
     element.classList.remove("correct");
     element.classList.remove("wrong");
-}
+};
 
 function saveScore() {
     document.getElementById("score-container").style.display = "inline-block";
-    document.getElementById("your-score").textContent =  score + " out of " + shuffledQuestions.length + " questions correct.";
+    document.getElementById("your-score").textContent =  "Your final score is " + timeLeft
     
-}
+};
+
+function showHighScores(initials) {
+    document.getElementById("highscores").style.display = "inline-block";
+    document.getElementById("high-scores").style.display = "inline-block"
+
+    var initials = localStorage.getItem("initials");
+    var score = localStorage.getItem("timeLeft");
+    var initialsField = document.getElementById("initial1");
+    var scoreField = document.getElementById("score1");
+
+    initialsField.textContent = initials;
+    scoreField.textContent = timeLeft;
+
+    if (initials == null || timeLeft == null) {
+        document.getElementById("high-scores").style.display = "none";
+        document.getElementById("no-scores").style.display = "inline-block";
+      }
+  };
+
+  viewHighScores.addEventListener("click", showHighScores);
+submitButton.addEventListener("click", function (event) {
+  event.preventDefault()
+  var initials = document.querySelector("#initials-field").value;
+  localStorage.setItem("initials", initials);
+  localStorage.setItem("timeLeft", timeLeft);
+  showHighScores();
+});
