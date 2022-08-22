@@ -115,7 +115,7 @@ button:hover {
 imput[type-text] {
     padding: 10px;
     margin: 8px 0;
-    barder: 1px solid var(--tertiary-color);
+    border: 1px solid var(--tertiary-color);
     border-radius: 4px;
     box-sizing: border-box;
 }
@@ -126,4 +126,12 @@ imput[type-text] {
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin: 24px 0;
+}
+
+@media screen and (max-width:600px) {
+    .btn-grid {
+        grid-template-columns: repeat(1,auto);
+        gap: 0;
+        margin: 0;
+    }
 }
