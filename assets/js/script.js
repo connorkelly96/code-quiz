@@ -121,6 +121,12 @@ function saveScore() {
     document.getElementById("score-container").classList.remove("hidden");
     document.getElementById("your-score").textContent =  "Your final score is " + timeLeft
     clearInterval(timerID);
+    setTimeout(function() {
+        localStorage.setItem("scores", JSON.stringify(scores));
+        questionContainerEl.classList.add("hide");
+        document.getElementById("score-container").classList.remove("hide");
+        document.getElementById("your-score").textContent = "Your final score is " + timeLeft;
+    }, 2000)
     
 };
 
@@ -170,8 +176,8 @@ function showHighScores(initials) {
 submitButton.addEventListener("click", function (event) {
   event.preventDefault()
   var initials = document.querySelector("#initials-field").value;
-  localStorage.setItem("initials", initials);
-  localStorage.setItem("timeLeft", timeLeft);
+ // localStorage.setItem("initials", initials);
+  //localStorage.setItem("timeLeft", timeLeft);
   showHighScores();
 });
 
