@@ -26,6 +26,7 @@ a{
 
 .centered{
     text-align: center;
+
 }
 /*for the header*/
 header {
@@ -112,7 +113,7 @@ button:hover {
 }
 
 /*highscore imput*/
-imput[type-text] {
+input[type-"text"] {
     padding: 10px;
     margin: 8px 0;
     border: 1px solid var(--tertiary-color);
@@ -126,6 +127,15 @@ imput[type-text] {
     flex-wrap: wrap;
     justify-content: space-evenly;
     margin: 24px 0;
+}
+
+.name-div,
+.score-div {
+    flex: 1 35%;
+    padding: 10px 0;
+    border: 1px solid var(--correct-color);
+    margin-top: -0.5px;
+    margin-left: -0.5px;
 }
 
 @media screen and (max-width:600px) {

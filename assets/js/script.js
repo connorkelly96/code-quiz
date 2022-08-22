@@ -14,7 +14,7 @@ var clearScoreButton = document.getElementById("clear");
 var initialsField = document.getElementById("player-name");
 var restartButton = document.getElementById("restart");
 var scoreField = document.getElementById("player-score");
-var scores = [];
+var scores = JSON.parse(localStorage.getItem("scores")) || [];
 
 var shuffledQuestions, currentQuestions;
 
@@ -122,7 +122,7 @@ function saveScore() {
     document.getElementById("your-score").textContent =  "Your final score is " + timeLeft
     clearInterval(timerID);
     setTimeout(function() {
-        localStorage.setItem("scores", JSON.stringify(scores));
+       // localStorage.setItem("scores", JSON.stringify(scores));
         questionContainerEl.classList.add("hide");
         document.getElementById("score-container").classList.remove("hide");
         document.getElementById("your-score").textContent = "Your final score is " + timeLeft;
@@ -131,7 +131,7 @@ function saveScore() {
 };
 
 var loadScores = function() {
-    var savedScores = localStorage.getItem("scores") || []
+
     if (!savedScores) {
         return false;
     }
@@ -144,7 +144,7 @@ var loadScores = function() {
     }
     savedScores.push(newScore);
     console.log(savedScores)
-    window.localStorage.setItem("scores", JSON.stringify(savedScores));
+
 
     savedScores.forEach(score => {
         initialsField.innerText = score.initials
@@ -157,15 +157,23 @@ function showHighScores(initials) {
     document.getElementById("highscores").classList.remove("hidden");
     document.getElementById("score-container").classList.add("hide");
     startContainerEl.classList.add("hidden")
-    questionContainerEl.classList.add("hide");
-
-    var initials = localStorage.getItem("initials");
-    var score = localStorage.getItem("timeLeft");
-    var initialsField = document.getElementById("player-name");
-    var scoreField = document.getElementById("playerscore");
-
-    initialsField.textContent = initials;
-    scoreField.textContent = timeLeft;
+    questionContainerEl.classList.add("hidden");
+    var score = {
+        initials, timeLeft
+    }
+    scores.push(score)
+    console.log(scores)
+    for (i = 0; i < scores.length; i++) {
+        var div1 = document.createElement("div");
+        div1.setAttribute("class", "name-div");
+        div1.innerText = scores[i].initials;
+        var div2 = document.createElement("div");
+        div2.setAttribute("class", "score-div");
+        div2.innerText = scores[i].timeLeft;
+        var highScoreEl = document.getElementById("highscore");
+        highScoreEl.appendChild(div1);
+        highScoreEl.appendChild(div2);
+    }
 
     if (initials == null || timeLeft == null) {
         document.getElementById("no-scores").classList.remove("hidden");
