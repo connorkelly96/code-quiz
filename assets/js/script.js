@@ -57,24 +57,33 @@ function displayQuestion(question) {
             button.dataset.correct = answer.correct;
         }
         button.addEventListener("click", chooseAnswer);
-        answerButtinEl.appendChild(button);
+        answerButtonsEl.appendChild(button);
     })
 };
 
 function resetQuestion() {
     nextButton.classList.add("hidden");
-    checkAnswerEl,classList.add("hidden");
+    checkAnswerEl.classList.add("hidden");
     while(answerButtonsEl.firstChild) {
-        answerButtonsEl.removeChild(answerButtonEl.firstChild);
+        answerButtonsEl.removeChild(answerButtonsEl.firstChild);
     }
 };
 
 function chooseAnswer(e) {
 var selectedButton = e.target;
 var correct = selectedButton.dataset.correct;
+checkAnswerEl.classList.remove("hidden")
+
+if (correct) {
+    checkAnswerEl.innerHTML = "You got it right!";
+} else {
+    
+    timeLeft -= 10;
+    checkAnswerEl.innerHTML = "Sorry that was not the correct answer.";
+}
 
 Array.from(answerButtonsEl.children).forEach(button => {
-    setStatuClass(button, button.dataset.correct);
+    setStatusClass(button, button.dataset.correct);
 })
 if (shuffledQuestions.length > currentQuestionIndex + 1) {
     nextButton.classList.remove("hidden");
@@ -82,6 +91,7 @@ if (shuffledQuestions.length > currentQuestionIndex + 1) {
 } else {
     startButton.innetText = "Restart"
     startButton.classList.remove("hidden");
+    saveScore();
 }
 };
 
@@ -90,11 +100,11 @@ function setStatusClass(element, correct) {
     console.log(correct)
     if (correct) {
         element.classList.add("correct");
-        document.querySelector("#check-answer").textContent = "Correct!";
+
     } else {
-        timeLeft -= 10;
+
         element.classList.add("wrong");
-        document.querySelector("#check-answer").textContent = "Wrong!";
+
     }
 };
 
@@ -104,8 +114,8 @@ function clearStatusClass(element) {
 };
 
 function saveScore() {
-    document.getElementById("score-container").classList.remove("hidden");
     questionContainerEl.classList.add("hidden");
+    document.getElementById("score-container").classList.remove("hidden");
     document.getElementById("your-score").textContent =  "Your final score is " + timeLeft
     
 };
@@ -113,6 +123,7 @@ function saveScore() {
 function showHighScores(initials) {
     document.getElementById("highscores").classList.remove("hidden");
     document.getElementById("score-container").classList.add("hide");
+    startContainerEl.classList.add("hidden")
     questionContainerEl.classList.add("hide");
 
     var initials = localStorage.getItem("initials");

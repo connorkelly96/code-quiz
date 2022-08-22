@@ -24,6 +24,9 @@ a{
     text-decoration: none;
 }
 
+.centered{
+    text-align: center;
+}
 /*for the header*/
 header {
     display: flex;
@@ -105,6 +108,16 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 10px 0;
+}
+
+/*highscore imput*/
+imput[type-text] {
+    padding: 10px;
+    margin: 8px 0;
+    barder: 1px solid var(--tertiary-color);
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 /*highscore page*/

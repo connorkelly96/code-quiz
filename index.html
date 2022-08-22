@@ -20,7 +20,9 @@
     <section id="starting-container" class="start-quiz">
         <h1> Welcome to Code Quiz</h1>
         <p> You'll have 75 seconds to answer the questions. Try to get the highest score possible. Wrong answers will decuct your time by 10 seconds. Your score will be the total time you have left after answering all the questions. Press start to begin!</p>
-        <button id="startBtn" class="startBtn">Start</button>
+        <div class="controls">
+        <button id="startBtn" class="startBtn">Start Quiz</button>
+        </div>
     </section>
     <section id="questions-container" class="hidden">
         <h1 id="question">Question</h1>
@@ -45,12 +47,15 @@
 </section>
 <section id="highscores" class="highscores-container hidden">
     <div id="high-scores">
-        <h1>Your Score</h1>
+        <h1 class="centered">Leaderboard</h1>
         <div id="highscore" class=" highscore highscore-list">
             <div id="initial1" class="initials"></div>
             <div id="score1" class="score"></div>
         </div>
-        <h2>Refresh the page to begin.</h2>
+        <div class="controls">
+            <button id="go-back">Go back</button>
+            <button id="clear-score">Clear High Score</button>
+        </div>
     </div>
     <div id="no-scores" class="highscores-container hidden">
         <h2>
