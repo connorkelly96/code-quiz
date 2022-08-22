@@ -78,11 +78,17 @@ var correct = selectedButton.dataset.correct;
 checkAnswerEl.classList.remove("hidden")
 
 if (correct) {
-    checkAnswerEl.innerHTML = "You got it right!";
+    checkAnswerEl.innerHTML = "That is the Right Answer!";
 } else {
     
-    timeLeft -= 10;
-    checkAnswerEl.innerHTML = "Sorry that was not the correct answer.";
+
+    checkAnswerEl.innerHTML = "Sorry that was Incorrect.";
+    if (timeLeft <= 10) {
+        timeLeft = 0;
+    } else {
+        // If the aswer is wrong, deduct time by 10
+        timeLeft -= 10;
+    }
 }
 
 Array.from(answerButtonsEl.children).forEach(button => {
@@ -117,12 +123,9 @@ function clearStatusClass(element) {
 };
 
 function saveScore() {
-    questionContainerEl.classList.add("hidden");
-    document.getElementById("score-container").classList.remove("hidden");
-    document.getElementById("your-score").textContent =  "Your final score is " + timeLeft
     clearInterval(timerID);
+    timerEl.tectContent = "Time:", + timeLeft;
     setTimeout(function() {
-       // localStorage.setItem("scores", JSON.stringify(scores));
         questionContainerEl.classList.add("hide");
         document.getElementById("score-container").classList.remove("hide");
         document.getElementById("your-score").textContent = "Your final score is " + timeLeft;
@@ -158,10 +161,12 @@ function showHighScores(initials) {
     document.getElementById("score-container").classList.add("hide");
     startContainerEl.classList.add("hidden")
     questionContainerEl.classList.add("hidden");
-    var score = {
-        initials, timeLeft
+    if (typeof initials == "string") {
+        var score = {
+            initials, timeLeft
+        }
+        scores.push(score)
     }
-    scores.push(score)
     var highScoreEl = document.getElementById("highscore");
     highScoreEl.innerHTML = "";
     for (i = 0; i < scores.length; i++) {
@@ -177,22 +182,18 @@ function showHighScores(initials) {
     }
 
     localStorage.setItem("scores", JSON.stringify(scores));
-   // if (initials == null || timeLeft == null) {
-     //   document.getElementById("no-scores").classList.remove("hidden");
-      //}
+
   };
 
   viewHighScores.addEventListener("click", showHighScores);
 submitButton.addEventListener("click", function (event) {
   event.preventDefault()
   var initials = document.querySelector("#initials-field").value;
- // localStorage.setItem("initials", initials);
-  //localStorage.setItem("timeLeft", timeLeft);
   showHighScores();
 });
 
 //refreshing the page
-restartButton.addEventListenrr("click", function() {
+restartButton.addEventListener("click", function() {
     WritableStreamDefaultController.location.reload();
 });
 
