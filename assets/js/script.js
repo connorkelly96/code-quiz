@@ -9,21 +9,22 @@ var answerButtonsEl = document.getElementById("choice-buttons");
 var checkAnswerEl = document.getElementById("check-answer");
 var viewHighScores = document.getElementById("highscores-link");
 var submitButton = document.getElementById("submit-btn");
+var clearScoreButton = document.getElementById("clear")
+var restartButton = document.getElementById("restart")
 
 var shuffledQuestions, currentQuestions;
 
 function timer() {
     var timeInterval = setInterval(function () {
-        timerEl.textContent = "Time: " + timeLeft;
         timeLeft--;
+        timerEl.textContent = "Time: " + timeLeft;
         if (timeLeft <= 0) {
-            console.log("You are out of time");
             timerEl.textContent = "";
             clearInterval(timeInterval);
-            saveScore();
+           // saveScore();
         }
     }, 1000);
-    return timeLeft;
+  //  return timeLeft;
 };
 
 startButton.addEventListener('click', startGame);
@@ -128,8 +129,8 @@ function showHighScores(initials) {
 
     var initials = localStorage.getItem("initials");
     var score = localStorage.getItem("timeLeft");
-    var initialsField = document.getElementById("initial1");
-    var scoreField = document.getElementById("score1");
+    var initialsField = document.getElementById("player-name");
+    var scoreField = document.getElementById("playerscore");
 
     initialsField.textContent = initials;
     scoreField.textContent = timeLeft;
@@ -147,3 +148,13 @@ submitButton.addEventListener("click", function (event) {
   localStorage.setItem("timeLeft", timeLeft);
   showHighScores();
 });
+
+//refreshing the page
+restartButton.addEventListenrr("click", function() {
+    WritableStreamDefaultController.location.reload();
+});
+
+clearScoreButton.addEventListener("click", function () {
+    localStorage.clear();
+}
+);
