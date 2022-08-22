@@ -162,7 +162,8 @@ function showHighScores(initials) {
         initials, timeLeft
     }
     scores.push(score)
-    console.log(scores)
+    var highScoreEl = document.getElementById("highscore");
+    highScoreEl.innerHTML = "";
     for (i = 0; i < scores.length; i++) {
         var div1 = document.createElement("div");
         div1.setAttribute("class", "name-div");
@@ -176,9 +177,9 @@ function showHighScores(initials) {
     }
 
     localStorage.setItem("scores", JSON.stringify(scores));
-    if (initials == null || timeLeft == null) {
-        document.getElementById("no-scores").classList.remove("hidden");
-      }
+   // if (initials == null || timeLeft == null) {
+     //   document.getElementById("no-scores").classList.remove("hidden");
+      //}
   };
 
   viewHighScores.addEventListener("click", showHighScores);
