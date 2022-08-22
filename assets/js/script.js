@@ -175,6 +175,7 @@ function showHighScores(initials) {
         highScoreEl.appendChild(div2);
     }
 
+    localStorage.setItem("scores", JSON.stringify(scores));
     if (initials == null || timeLeft == null) {
         document.getElementById("no-scores").classList.remove("hidden");
       }
@@ -196,5 +197,6 @@ restartButton.addEventListenrr("click", function() {
 
 clearScoreButton.addEventListener("click", function () {
     localStorage.clear();
+    document.getElementById("highscore").innerHTML = "";
 }
 );
