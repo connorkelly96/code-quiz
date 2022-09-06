@@ -20,7 +20,7 @@ var shuffledQuestions, currentQuestions;
 
 
 
-startButton.addEventListener('click', startGame);
+startButton.addEventListener("click", startGame);
 nextButton.addEventListener("click", () => {
     currentQuestionIndex++;
     startNextQuestion();
@@ -28,7 +28,7 @@ nextButton.addEventListener("click", () => {
 
 function countdown() {
     timeLeft--;
-    timerEl,textContent = "time:" + timeLeft;
+    timerEl.textContent = "time:" + timeLeft;
     if (timeLeft <=0) {
         saveScore();
     }
