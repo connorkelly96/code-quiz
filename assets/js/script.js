@@ -29,7 +29,7 @@ nextButton.addEventListener("click", () => {
 function countdown() {
     timeLeft--;
     timerEl.textContent = "time:" + timeLeft;
-    if (timeLeft <=0) {
+    if (timeLeft >=0) {
         saveScore();
     }
 };
