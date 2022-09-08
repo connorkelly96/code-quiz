@@ -29,9 +29,7 @@ nextButton.addEventListener("click", () => {
 function countdown() {
     timeLeft--;
     timerEl.textContent = "time:" + timeLeft;
-    if (timeLeft >=0) {
-        saveScore();
-    }
+
 };
 //start the game
 function startGame() {
@@ -127,7 +125,7 @@ function saveScore() {
     timerEl.tectContent = "Time:", + timeLeft;
     setTimeout(function() {
         questionContainerEl.classList.add("hide");
-        document.getElementById("score-container").classList.remove("hide");
+        document.getElementById("score-container").classList.remove("hidden");
         document.getElementById("your-score").textContent = "Your final score is " + timeLeft;
     }, 2000)
     
